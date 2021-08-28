@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CVTEST</title>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"></script>
+        <script type="text/javascript" src="cov.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+    </head>
+
+    <button id="buttonAuto" onclick="auto()">スタート</button>
+    <button id="buttonStop" onclick="stopAuto()">一時停止</button><br>
+    <button id="buttonProceed" onclick="processDay()">一日進める</button><br>
+    <button id="buttonEmergency" onclick="emergency()">緊急事態宣言</button>
+    <button id="buttonEndEmergency" onclick="endEmergency()">緊急事態解除</button><br>
+    <button id="buttonReset" onclick="startSimulation()">リセット</button><br>
+
+    <div>
+        <div>
+            新規感染者確認数: <input id="checkboxConfirmed" type="checkbox" checked>
+            新規感染者数: <input id="checkboxInfected" type="checkbox">
+            ワクチン接種数: <input id="checkboxVaccinated" type="checkbox">
+        </div>
+        <canvas id="canvasChart"></canvas><br>
+        <div>
+            感染者確認総数: <input id="checkboxTotalConfirmed" type="checkbox" checked>
+            感染者総数: <input id="checkboxTotalInfected" type="checkbox">
+            ワクチン接種者総数: <input id="checkboxTotalVaccinated" type="checkbox">
+            免疫保持者総数: <input id="checkboxTotalImmune" type="checkbox">
+        </div>
+        <canvas id="canvasTotalChart"></canvas><br>
+    </div>
+
+    今日の新規感染者確認数: <span id="labelConfirmedToday"></span>
+
+    <div>
+        開始日の新規感染者確認数: <input id="inputConfirmedToday" type="number" value="10000" min="0"><br>
+        開始日1週間前の新規感染者確認数: <input id="inputConfirmed1WeekAgo" type="number" value="5000" min="0"><br>
+        開始日2週間前の新規感染者確認数: <input id="inputConfirmed2WeekAgo" type="number" value="3000" min="0"><br>
+        感染者確認総数: <input id="inputConfirmedTotal" type="number" value="1000000" min="0"><br>
+        ワクチン接種者総数: <input id="inputVaccinatedTotal" type="number" value="30000000" min="0"><br>
+
+        人口: <input id="inputPopulation" type="number" value="120000000" min="0"><br>
+        基本再生産数: <input id="inputReproduceRate" type="number"  step="0.01" value="2.5" min="0"><br>
+        基本再生産数(緊急事態宣言): <input id="inputEmergencyReproduceRate" type="number"  step="0.01" value="1.0" min="0"><br>
+        潜伏期間(日): <input id="inputIncubationPeriod" type="number" value="5" min="0"><br>
+        感染力のある期間(日): <input id="inputSpreadDays" type="number" value="7" min="0"><br>
+        感染確認までの遅延(日): <input id="inputConfirmDelay" type="number" value="5" min="0"><br>
+        感染捕捉率(%): <input id="inputConfirmPercent" type="number" value="70" min="0"><br>
+        一日のワクチン接種回数: <input id="inputVaccineDosePerDay" type="number" value="1200000" min="0"><br>
+        ワクチンの感染予防率(%): <input id="inputVaccineEffectivenessPercent" type="number" value="85" min="0"><br>
+        ワクチン接種希望率(%): <input id="inputVaccineWantPercent" type="number" value="75" min="0"><br>
+    </div>
+</html>
